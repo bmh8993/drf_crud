@@ -16,17 +16,6 @@ class BoardListCreateAPIView(generics.ListCreateAPIView):
 class BoardDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
-    #permission_classes = [permissions.IsAuthenticatedOrReadOnly]
     permission_classes = [IsWriterOrReadOnly]
 
 
-# class BoardUpdateAPIView(generics.UpdateAPIView):
-#     queryset = Board.objects.all()
-#     serializer_class = BoardSerializer
-#     permission_classes = [IsWriterOrReadOnly]
-
-
-# class BoardDestroyAPIView(generics.DestroyAPIView):
-#     queryset = Board.objects.all()
-#     serializer_class = BoardSerializer
-#     permission_classes = [IsWriterOrReadOnly]
