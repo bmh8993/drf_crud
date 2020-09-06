@@ -11,11 +11,11 @@ class BoardListCreateAPIView(generics.ListCreateAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
     pagination_class = SmallSetPagination
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
 
 class BoardDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Board.objects.all()
     serializer_class = BoardSerializer
-    permission_classes = [IsWriterOrReadOnly]
-
-
+    permission_classes = [IsWriterOrReadOnly,
+                          permissions.IsAuthenticatedOrReadOnly]
